@@ -1,3 +1,4 @@
+// SOAL 1
 const person = {
     name: "Yudi",
     age: 100,
@@ -17,14 +18,21 @@ const person = {
   
   /// STOP
   
+  console.log("--------- SOAL 1 ----------");
   console.log(person.name);
   console.log(person.age);
   console.log(person.favDrinks);
   person.greeting(person.name);
+  console.log("");
 
+// SOAL 2
+  function getObjectValue(obj,path) {
+      const field = obj + path
 
-  function getObjectValue() {
-      
+      if (path === undefined){
+          return null;
+      }
+      return field;
   }
 
 const milkBasedCoffee = {
@@ -39,14 +47,16 @@ const milkBasedCoffee = {
       brand: "susu murni",
       isVegan: false,
       ratio: 5
-    }
+    }    
   },
 }
 
-const espresso = getObjectValue(milkBasedCoffee, "ingredients.espresso.origin");
-const coffeeBrand = getObjectValue(milkBasedCoffee, "ingredients.espresso.brand");
-const isMilkVegan = getObjectValue(milkBasedCoffee, "ingredients.milk.isVegan");
+const espresso = getObjectValue(milkBasedCoffee, milkBasedCoffee.ingredients.espresso.origin);
+const coffeeBrand = getObjectValue(milkBasedCoffee, milkBasedCoffee.ingredients.espresso.brand);
+const isMilkVegan = getObjectValue(milkBasedCoffee, milkBasedCoffee.ingredients.milk.isVegan);
 
+console.log("--------- SOAL 2 ----------");
 console.log(espresso);
 console.log(coffeeBrand);
-console.log(isMilkVegan)
+console.log(isMilkVegan);
+
