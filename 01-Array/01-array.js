@@ -52,3 +52,28 @@ console.log(" ------------SOAL 2 ----------- ");
 
 getAverage(arr3)
 getAverage(arr4)
+
+// SOAL 3
+const arr5 = [
+    [10],
+    [9, 7, 1],
+    [2, 8],
+  ];
+  
+  function searchInArray(arr,number) {
+//     let sum = 0;
+//   numbers3D.forEach((eachRowValues) => {
+//     eachRowValues.forEach((eachRowAndColValues) => {
+//       eachRowAndColValues.forEach((eachRowColAndDepValue) => {
+//         sum += eachRowColAndDepValue;
+//       });
+//     });
+  }
+  
+  console.log(" ");
+  console.log(" ------------SOAL 3 ----------- ");
+
+  console.log(searchInArray(arr5, 3));
+  console.log(searchInArray(arr5, 2));
+  console.log(searchInArray(arr5, 4));
+  console.log(searchInArray(arr5, 8));
