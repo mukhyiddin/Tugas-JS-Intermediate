@@ -29,13 +29,30 @@ const person = {
 
 // SOAL 2
   function getObjectValue(obj,path) {
-      const field = obj + path
+      // const field = obj + path
 
-      if (path === undefined){
-          return null;
+      // if (path === undefined){
+      //     return null;
+      // }
+      // return field;
+
+      function getObjectValue(obj, path) {
+        let arrPath = path.split('.');
+        for (let i = 0; i < arrPath.length; ++i){
+          let j = arrPath[i];
+          if (j in obj) {
+              obj = obj[j];
+          } else {
+              return null;
+              break;
+          }
+        }
+        return obj;
       }
-      return field;
-  }
+    
+      }
+    
+  
 
 const milkBasedCoffee = {
   name: "latte",
@@ -52,17 +69,15 @@ const milkBasedCoffee = {
     }    
   },
 }
-
-const espresso = getObjectValue(milkBasedCoffee, milkBasedCoffee.ingredients.espresso.origin);
-const coffeeBrand = getObjectValue(milkBasedCoffee, milkBasedCoffee.ingredients.espresso.brand);
-const isMilkVegan = getObjectValue(milkBasedCoffee, milkBasedCoffee.ingredients.milk.isVegan);
+// getObjectValue(milkBasedCoffee, "ingredients.milk.isVegan");
+const espresso = getObjectValue(milkBasedCoffee, "ingredients.espresso.origin");
+const coffeeBrand = getObjectValue(milkBasedCoffee, "ingredients.espresso.brand");
+const isMilkVegan = getObjectValue(milkBasedCoffee, "ingredients.milk.isVegan");
 
 console.log("--------- SOAL 2 ----------");
 console.log(espresso);
 console.log(coffeeBrand);
 console.log(isMilkVegan);
-
-
 
 // SOAL 3
 // dibawah ini merupakan history transasksi yang telah kalian lakukan
@@ -95,21 +110,59 @@ const items = [
 //      jumlahkan seluruh keuntungan yang kita buat selama 3 hari berdasarkan koin yang kita gunakan
 //      rangkuman dari pendapatan kita HARUS berupa sebuah object
 //      pengerjaan harus menggunakan built-in method reduce
-    // const hitung  = items[1].reduce(buy,sell);
-    // cek.array.forEach(items => {
-    //     const hitung  = items[1].reduce(buy,sell);
-    // });
-
-    cek1 = items[0].btc.buy
+    
+    const dupObjItems = [];
+    
+      for (let i = 0; i < items.length; i++) {
         
-    // console.log(items[0]);
-    console.log(cek1);
-}
+        const item = items[i];
+        
+        let tempItem = {
+          btc: 0,
+          doge: 0,
+          eth: 0
+        };
 
+        const btc = Object.values(item.btc).reduce((buy, sell) => sell - buy );
+        const eth = Object.values(item.eth).reduce((buy, sell) => sell - buy );
+        const doge = Object.values(item.doge).reduce((buy, sell) => sell - buy );
+        tempItem['btc'] = btc;
+        tempItem['eth'] = eth;
+        tempItem['doge'] = doge;
+        dupObjItems.push(tempItem);
+        
+      }
+      
+        const result = dupObjItems.reduce(
+          (prev, curr ) => {
+            curr.btc += prev.btc;
+            curr.eth += prev.eth;
+            curr.doge += prev.doge;
+            return curr;
+          },
+
+          { btc: 0, eth: 0, doge:0 }
+
+        );
+        return result;
+        
+
+    // const hitung = items[0].reduce(
+    //   (previousValue, currentValue) => previousValue + currentValue
+    // );
+  
+    // cek1 = items[0].doge.sell - items[0].doge.buy
+    // cek2 = items[1].doge.sell - items[1].doge.buy
+    // cek3 = items[2].doge.sell - items[2].doge.buy 
+    // hitung = cek1 + cek2 + cek3    
+    // console.log(hitung);
+    
+  };
   console.log("");
   console.log("--------- SOAL 3 ----------");
-  calculateIncome(items)
-
+  console.log(calculateIncome(items));
+  
+  
 //   expected hasil
 //   {
 //     btc: 0,

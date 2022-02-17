@@ -60,7 +60,7 @@ const arr5 = [
     [2, 8],
   ];
   
-  function searchInArray(arr,number) {
+//   function searchInArray(arr,number) {
 //     let sum = 0;
 //   numbers3D.forEach((eachRowValues) => {
 //     eachRowValues.forEach((eachRowAndColValues) => {
@@ -68,8 +68,34 @@ const arr5 = [
 //         sum += eachRowColAndDepValue;
 //       });
 //     });
-  }
-  
+//   }
+
+  function searchInArray(arr, num) {
+    let tempArr = [];
+    for (let i = 0; i < arr.length; i++) {
+        let number = arr[i];
+        for (let j = 0; j < number.length; j++) {
+            tempArr.push(number[j]);
+        }
+    }
+
+    for (let k = 0; k < tempArr.length; k++) {
+        if (tempArr[k] === num) {
+            var found = true;
+            var index = k;
+        }
+    }
+
+    if (found) {
+        return index;
+    } else {
+        return 'null';
+    }
+}
+
+
+
+
   console.log(" ");
   console.log(" ------------SOAL 3 ----------- ");
 
