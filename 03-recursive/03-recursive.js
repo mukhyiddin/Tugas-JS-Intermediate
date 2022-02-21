@@ -41,6 +41,7 @@ console.log(sumOfArray(arr2));
  
  function countAboveAvg(array, number) {
     sumOfArray(number);
+    
 
     // if(array == array[sum]){
     //     return sum
@@ -50,6 +51,7 @@ console.log(sumOfArray(arr2));
         if(element > sumOfArray(number) / number.length){
 
             console.log("contoh : ");
+            
             return element
             
         }

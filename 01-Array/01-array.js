@@ -93,9 +93,6 @@ const arr5 = [
     }
 }
 
-
-
-
   console.log(" ");
   console.log(" ------------SOAL 3 ----------- ");
 
