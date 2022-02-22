@@ -2,6 +2,17 @@ const arr1 = [1, 2, 3, 4, 5];
 const arr2 = [0, 3, 1, 10, 22];
 
 function sumOfArray(array) {
+    // kurangin gerbong
+    // if(array == array[sum]){
+    //      return sum
+    // }else{
+    //     array.forEach((value) => {
+    //         array.lenght = array.lenght - 1
+    //         return sum += value
+    //     });
+    //     console.log(sum);
+    // }
+    // sumOfArray(array)
 
     let arr = [...array];
     let sum = arr[0];
@@ -31,6 +42,7 @@ console.log(sumOfArray(arr2));
  function countAboveAvg(array, number) {
     sumOfArray(number);
     
+
     // if(array == array[sum]){
     //     return sum
     // }

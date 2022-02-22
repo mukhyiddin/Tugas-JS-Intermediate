@@ -104,85 +104,27 @@
       }
 
       githubUsers.forEach((user) => {
-        profile = localStorage.getItem(username);
-        let isFollowed = false;
+        const elCol = document.createElement("div");
+        elCol.classList.add("col-xs-12", "col-sm-6", "col-md-4", "col-lg-3");
 
-        if (profile) {
-          const followedUser = JSON.parse(profile);
-          const findUser = followedUser.find(
-            (userValue) => userValue.id === user.id
-          );
-          if (findUser) {
-            isFollowed = true;
-          }
-        }
+        const elCard = document.createElement("div");
+        elCard.classList.add("card");
 
-        const elCol = document.createElement('div');
-        elCol.classList.add('col-xs-12', 'col-sm-6', 'col-md-4', 'col-lg-3');
+        const elCardImg = document.createElement("div");
+        elCard.classList.add("card-img-top");
+        elCard.setAttribute("src", user.avatar_url);
 
-        const elCard = document.createElement('div');
-        elCard.classList.add('card');
+        const elCardBody = document.createElement("div");
+        elCardBody.classList.add("card-body");
 
-        const elCardImg = document.createElement('div');
-        elCard.classList.add('card-img-top');
-        elCard.setAttribute('src', user.avatar_url);
-
-        const elCardBody = document.createElement('div');
-        elCardBody.classList.add('card-body');
-
-        const elCardTitle = document.createElement('div');
-        elCardTitle.classList.add('card-title');
+        const elCardTitle = document.createElement("div");
+        elCardTitle.classList.add("card-title");
         elCardTitle.innerHTML = user.login;
 
-        const elCardButton = document.createElement('button');
-        elCardButton.setAttribute('type', 'button');
-
-        if (isFollowed) {
-          elCardButton.innerHTML = 'Unfollow';
-          elCardButton.classList.add('btn', 'btn-success', 'w-100');
-        } else {
-          elCardButton.innerHTML = 'Follow';
-          elCardButton.classList.add('btn', 'btn-primary', 'w-100');
-        }
-
-        elCardButton.onclick = function (e) {
-          e.preventDefault();
-
-          profile = localStorage.getItem(username);
-          let sumFollowed = 0;
-
-          if (profile) {
-            const followedUser = JSON.parse(profile);
-            let newFollowedUser = [...followedUser];
-            const findUser = followedUser.find(
-              (userValue) => userValue.id === user.id
-            );
-            if (!findUser) {
-              newFollowedUser.push(user);
-              e.target.innerHTML = 'Unfollow';
-              e.target.classList.remove('btn-primary');
-              e.target.classList.add('btn-success');
-            } else {
-              newFollowedUser = newFollowedUser.filter(
-                (userValue) => userValue.id !== user.id
-              );
-              e.target.innerHTML = 'Follow';
-              e.target.classList.remove('btn-success');
-              e.target.classList.add('btn-primary');
-            }
-            sumFollowed = newFollowedUser.length;
-            localStorage.setItem(username, JSON.stringify(newFollowedUser));
-          } else {
-            const followedUser = [user];
-            sumFollowed = followedUser.length;
-            localStorage.setItem(username, JSON.stringify(followedUser));
-          }
-          if (profile) {
-            elBadgeUser.classList.remove('d-none');
-            elBadgeUser.innerHTML = sumFollowed;
-          }
-          console.log(profile);
-        };
+        const elCardButton = document.createElement("button");
+        elCardButton.classList.add("btn", "btn-primary", "w-100");
+        elCardButton.setAttribute("type", "button");
+        elCardButton.innerHTML = "Follow";
 
         elCardBody.appendChild(elCardTitle);
         elCardBody.appendChild(elCardButton);
@@ -193,8 +135,6 @@
         elListUser.appendChild(elCol);
       });
 
-      
-      
     </script>
 
     <script
