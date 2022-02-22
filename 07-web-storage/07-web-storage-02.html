@@ -76,17 +76,6 @@
         elUsername.innerHTML = username
       }
 
-      // elBtnLogin.addEventListener("click", ambilData)
-
-      //   function ambilData(){
-      //       event.preventDefault();
-      //       elDivUsername.classList.remove("d-none");
-      //       elFormUsername.classList.add("d-none");
-      //       elDivUsername.childNodes[1].innerHTML = elFormUsername.value;
-      //       const sessionObject = SetUsername;
-      //       return sessionObject;
-      //   }
-
       elFormUsername.onsubmit = function (e){
         e.preventDefault();
         const dataForm = new FormData(e.target);
